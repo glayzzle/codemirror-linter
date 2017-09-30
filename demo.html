@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Code Mirror - PHP Linter</title>
+
+
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/codemirror.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/addon/lint/lint.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/codemirror.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/addon/lint/lint.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/mode/xml/xml.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/mode/javascript/javascript.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/mode/css/css.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/mode/htmlmixed/htmlmixed.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/mode/clike/clike.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/mode/php/php.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/addon/selection/active-line.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/addon/edit/matchbrackets.js"></script>
+
+  <!-- JSHINT LIBRARIES -->
+  <script src="https://rawgit.com/glayzzle/php-parser/master/dist/php-parser.min.js"></script>
+  <script src="./addon/lint/php-lint.js"></script>
+
+	<style type="text/css">
+		.CodeMirror {
+			font-size: 15px;
+			width: 100%, ;
+			height: 100%;
+		}
+	</style>
+</head>
+
+<body>
+	<!-- This is an awsome comment -->
+	<div id="code"></div>
+
+	<script type="text/javascript">
+		window.onload = function() {
+			editor = CodeMirror(document.getElementById("code"), {
+				mode: "application/x-httpd-php-open",
+				lineWrapping: true,
+				lineNumbers: true,
+        lint: true
+        gutters: ["CodeMirror-lint-markers"],
+				styleActiveLine: true,
+				matchBrackets: true,
+				value: "<?php\necho 'Hello world';\n",
+			});
+		};
+	</script>
+
+</body>
+</html>
