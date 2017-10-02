@@ -92,12 +92,12 @@
     }
     if (opt.disabledFunctions) {
       if (node.kind === 'call' && opt.disabledFunctions.indexOf(node.what.name) > -1) {
-        return addError('Function "' + node.what.name + '" is not available', node.loc);
+        return addError('Function "' + node.what.name + '" is not available', node.what.loc);
       }
     }
     if (opt.deprecatedFunctions) {
       if (node.kind === 'call' && opt.deprecatedFunctions.indexOf(node.what.name) > -1) {
-        return addWarning('Function "' + node.what.name + '" is deprecated', node.loc);
+        return addWarning('Function "' + node.what.name + '" is deprecated', node.what.loc);
       }
     }
   }
