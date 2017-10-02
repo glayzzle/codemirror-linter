@@ -5,8 +5,6 @@
 	<meta charset="UTF-8">
 	<title>Code Mirror - PHP Linter</title>
 
-
-
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/codemirror.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/addon/lint/lint.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/codemirror.js"></script>
@@ -34,23 +32,27 @@
 </head>
 
 <body>
-	<!-- This is an awsome comment -->
 	<div id="code"></div>
-
 	<script type="text/javascript">
 		window.onload = function() {
 			editor = CodeMirror(document.getElementById("code"), {
 				mode: "application/x-httpd-php-open",
 				lineWrapping: true,
 				lineNumbers: true,
-        			lint: true,
-        			gutters: ["CodeMirror-lint-markers"],
+				lint: {
+					disableEval: true,
+					disableExit: true,
+					disablePHP7: true,
+					disabledFunctions: ['proc_open', 'system'],
+					deprecatedFunctions: ['wp_list_cats']
+				},
+				gutters: ["CodeMirror-lint-markers"],
 				styleActiveLine: true,
 				matchBrackets: true,
-				value: "<?php\necho 'Hello world';\n"
+				value: "<?php\necho 'Hello world';\n$foo = [1, 2, 3]\n\t\n\twp_list_cats($bar);\nproc_open(false);\nexit(0);\neval('evil');\n"
 			});
 		};
 	</script>
-
+	<a style="position: absolute; top: 0; right: 0; z-index: 9;" href="https://github.com/glayzzle/codemirror-linter"><img style="border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
 </body>
 </html>
