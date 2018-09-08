@@ -2,10 +2,11 @@
 // Distributed under a BSD 3-Clause License : https://github.com/glayzzle/codemirror-linter/blob/master/LICENSE
 
 (function(mod) {
+  var Parser = window.PhpParser || require('php-parser');
   if (typeof exports == "object" && typeof module == "object") {
-    mod(require("cm/lib/codemirror"), require('php-parser'));
+    mod(require("cm/lib/codemirror"), Parser);
   } else {
-    mod(CodeMirror, require('php-parser'));
+    mod(CodeMirror, Parser);
   }
 })(function(CodeMirror, phpParser) {
   "use strict";
